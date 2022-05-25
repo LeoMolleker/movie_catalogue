@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
-import 'package:movies_catalogue/src/core/bootstrapper.dart';
-import 'package:movies_catalogue/src/core/named_routes.dart';
 
 import '../ui/pages/home/home_page.dart';
+import 'named_routes.dart';
 
 class AppRouter {
-  static Map<String, WidgetBuilder> routes({
-    required IBootstrapper bootstrapper,
-  }) {
+  static Map<String, WidgetBuilder> routes() {
     return {
-      NamedRoutes.homePage: (BuildContext context) => const HomePage(),
+      NamedRoutes.homePage: (
+        final BuildContext context,
+      ) =>
+          const HomePage(),
     };
   }
 }

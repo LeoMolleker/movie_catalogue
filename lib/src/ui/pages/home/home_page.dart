@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({final Key? key}) : super(key: key);
+import '../../../core/dio_configuration.dart';
+import '../../../data/clients/movies_client/movies_client.dart';
+import '../../../data/services/movies_services.dart';
+
+class HomePage extends ConsumerWidget {
+  const HomePage({
+    final Key? key,
+  }) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
+  Widget build(final BuildContext context, final WidgetRef ref) {
+    final movie = MoviesServices(moviesClient: MoviesClient(DioConfiguration.dioInstance));
+    movie.getTrendingMovies(time: 'day').then((final value) {
+      debugPrint(value.toString());
+    });
 
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(
-    final BuildContext context,
-  ) {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Home',
+          'Hi',
         ),
       ),
     );
